@@ -16,13 +16,15 @@ int main() {
 
     for (auto it = t4.begin(); it != t4.end(); ++it)
     {
-        std::cout << *it;
+        std::cout << *it << " ";
     }
+    std::cout << std::endl;
 
     for (auto el : t4)
     {
-        std::cout << el;
+        std::cout << el << " ";
     }
+    std::cout << std::endl;
 
     auto tail = t4.split_when([] (const int& val){return val == 2; });
 }

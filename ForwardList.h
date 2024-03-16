@@ -75,22 +75,18 @@ public:
 
     ForwardList(size_t count, const T& val)
             : size_(count) {
-        std::cout << "Count ctor" << std::endl;
         for (int i = 0; i < size_; i++)
             head_ = new Node(val, head_);
     }
 
     ForwardList(std::initializer_list<T> items)
             : size_(items.size()) {
-        std::cout << "Init list ctor" << std::endl;
         for (auto it = std::rbegin(items); it != std::rend(items); ++it)
             head_ = new Node(*it, head_);
     }
 
     ForwardList(const ForwardList<T>& other)
             : size_(other.size_) {
-        std::cout << "Copy ctor" << std::endl;
-
         Node *tail;
 
         for (auto curr = other.head_; curr != nullptr; curr = curr->Next)
@@ -106,12 +102,10 @@ public:
     }
 
     ForwardList(ForwardList<T>&& other) noexcept {
-        std::cout << "Move ctor" << std::endl;
         other.swap(*this);
     }
 
     ForwardList& operator=(const ForwardList<T>& other) {
-        std::cout << "Copy op" << std::endl;
         // We get copy of other and swaps it with *this
         ForwardList<T> temp(other);
         temp.swap(*this);
@@ -119,7 +113,6 @@ public:
     }
 
     ForwardList& operator=(ForwardList<T>&& other) noexcept {
-        std::cout << "Move op" << std::endl;
         // Basically, "other" is a temporary variable, so we don't care what will be there after move assignment
         // clear();
         other.swap(*this);
